@@ -23,28 +23,34 @@ renderer.setSize(window.innerWidth, window.innerHeight); //fullscreen
 
 //GEOMETRY
 // Torus
-const torusGeometry = new THREE.TorusGeometry(3, 3, 3, 100);
+const torusGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const torusMaterial = new THREE.MeshBasicMaterial({
   color: 0xff6347,
   wireframe: true,
 });
 const torus = new THREE.Mesh(torusGeometry, torusMaterial);
-scene.add(torus);
+// scene.add(torus);
 
 // Box
-const boxGeometry = new THREE.BoxBufferGeometry(10, 3, 16, 100);
+const boxGeometry = new THREE.BoxBufferGeometry(9, 9, 9);
 const boxMaterial = new THREE.MeshBasicMaterial({
   color: 0xff6347,
   wireframe: true,
 });
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
-// scene.add(box);
+scene.add(box);
 
 // LOOP RENDER
 //mechanism that tells browser you want to perform an animation
 //whenever browser repaints the screen, it will call render method to update the UI
 function animate() {
   requestAnimationFrame(animate);
+
+  box.rotation.x += 0.01;
+  box.rotation.y += 0.005;
+  box.rotation.z += 0.01;
+
+
   renderer.render(scene, camera);
 }
 
